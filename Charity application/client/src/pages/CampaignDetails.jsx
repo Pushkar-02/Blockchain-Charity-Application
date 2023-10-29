@@ -38,6 +38,15 @@ const CampaignDetails = () => {
     navigate("/");
     setIsLoading(false);
   };
+
+  const handleNFT = async () => {
+    setIsLoading(true);
+
+    // navigate("https://www.google.co.in/");
+    window.location.replace("https://makeswift-nft-website.vercel.app/");
+    setIsLoading(false);
+  };
+
   const handleWithdraw = async () => {
     const getCampaign = await contract.call("campaignDetail", state.pId);
     const accounts = await window.ethereum.request({
@@ -207,6 +216,14 @@ const CampaignDetails = () => {
                       title="Fund Campaign"
                       styles="w-full bg-[#8c6dfd]"
                       handleClick={handleDonate}
+                      disabled="true"
+                    />
+
+                    <CustomButton
+                      btnType="button"
+                      title="NFT Minting"
+                      styles="w-full bg-[#8c6dfd] mt-4"
+                      handleClick={handleNFT}
                       disabled="true"
                     />
                   </div>
